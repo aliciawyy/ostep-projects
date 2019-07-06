@@ -135,4 +135,4 @@ Now, time to go do the projects!
 
 ## Linux
 
-TBD.
+https://www.assistedcoding.eu/2017/11/06/install-vx6-operating-system/
