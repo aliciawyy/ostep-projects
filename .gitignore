@@ -1,0 +1,4 @@
+*.o
+*~
+
+initial-xv6/src/_*
