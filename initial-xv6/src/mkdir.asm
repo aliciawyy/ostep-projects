@@ -40,7 +40,7 @@ main(int argc, char *argv[])
     if(mkdir(argv[i]) < 0){
   30:	83 ec 0c             	sub    $0xc,%esp
   33:	ff 33                	pushl  (%ebx)
-  35:	e8 08 03 00 00       	call   342 <mkdir>
+  35:	e8 00 03 00 00       	call   33a <mkdir>
   3a:	83 c4 10             	add    $0x10,%esp
   3d:	85 c0                	test   %eax,%eax
   3f:	78 0f                	js     50 <main+0x50>
@@ -357,7 +357,7 @@ stat(const char *n, struct stat *st)
  215:	83 ec 08             	sub    $0x8,%esp
  218:	6a 00                	push   $0x0
  21a:	ff 75 08             	pushl  0x8(%ebp)
- 21d:	e8 f8 00 00 00       	call   31a <open>
+ 21d:	e8 f0 00 00 00       	call   312 <open>
   if(fd < 0)
  222:	83 c4 10             	add    $0x10,%esp
  225:	85 c0                	test   %eax,%eax
@@ -368,13 +368,13 @@ stat(const char *n, struct stat *st)
  22c:	ff 75 0c             	pushl  0xc(%ebp)
  22f:	89 c3                	mov    %eax,%ebx
  231:	50                   	push   %eax
- 232:	e8 fb 00 00 00       	call   332 <fstat>
+ 232:	e8 f3 00 00 00       	call   32a <fstat>
   close(fd);
  237:	89 1c 24             	mov    %ebx,(%esp)
   r = fstat(fd, st);
  23a:	89 c6                	mov    %eax,%esi
   close(fd);
- 23c:	e8 c1 00 00 00       	call   302 <close>
+ 23c:	e8 b9 00 00 00       	call   2fa <close>
   return r;
  241:	83 c4 10             	add    $0x10,%esp
 }
@@ -501,105 +501,105 @@ SYSCALL(read)
  2ef:	cd 40                	int    $0x40
  2f1:	c3                   	ret    
 
-000002f2 <getreadcount>:
-SYSCALL(getreadcount)
- 2f2:	b8 16 00 00 00       	mov    $0x16,%eax
+000002f2 <write>:
+SYSCALL(write)
+ 2f2:	b8 10 00 00 00       	mov    $0x10,%eax
  2f7:	cd 40                	int    $0x40
  2f9:	c3                   	ret    
 
-000002fa <write>:
-SYSCALL(write)
- 2fa:	b8 10 00 00 00       	mov    $0x10,%eax
+000002fa <close>:
+SYSCALL(close)
+ 2fa:	b8 15 00 00 00       	mov    $0x15,%eax
  2ff:	cd 40                	int    $0x40
  301:	c3                   	ret    
 
-00000302 <close>:
-SYSCALL(close)
- 302:	b8 15 00 00 00       	mov    $0x15,%eax
+00000302 <kill>:
+SYSCALL(kill)
+ 302:	b8 06 00 00 00       	mov    $0x6,%eax
  307:	cd 40                	int    $0x40
  309:	c3                   	ret    
 
-0000030a <kill>:
-SYSCALL(kill)
- 30a:	b8 06 00 00 00       	mov    $0x6,%eax
+0000030a <exec>:
+SYSCALL(exec)
+ 30a:	b8 07 00 00 00       	mov    $0x7,%eax
  30f:	cd 40                	int    $0x40
  311:	c3                   	ret    
 
-00000312 <exec>:
-SYSCALL(exec)
- 312:	b8 07 00 00 00       	mov    $0x7,%eax
+00000312 <open>:
+SYSCALL(open)
+ 312:	b8 0f 00 00 00       	mov    $0xf,%eax
  317:	cd 40                	int    $0x40
  319:	c3                   	ret    
 
-0000031a <open>:
-SYSCALL(open)
- 31a:	b8 0f 00 00 00       	mov    $0xf,%eax
+0000031a <mknod>:
+SYSCALL(mknod)
+ 31a:	b8 11 00 00 00       	mov    $0x11,%eax
  31f:	cd 40                	int    $0x40
  321:	c3                   	ret    
 
-00000322 <mknod>:
-SYSCALL(mknod)
- 322:	b8 11 00 00 00       	mov    $0x11,%eax
+00000322 <unlink>:
+SYSCALL(unlink)
+ 322:	b8 12 00 00 00       	mov    $0x12,%eax
  327:	cd 40                	int    $0x40
  329:	c3                   	ret    
 
-0000032a <unlink>:
-SYSCALL(unlink)
- 32a:	b8 12 00 00 00       	mov    $0x12,%eax
+0000032a <fstat>:
+SYSCALL(fstat)
+ 32a:	b8 08 00 00 00       	mov    $0x8,%eax
  32f:	cd 40                	int    $0x40
  331:	c3                   	ret    
 
-00000332 <fstat>:
-SYSCALL(fstat)
- 332:	b8 08 00 00 00       	mov    $0x8,%eax
+00000332 <link>:
+SYSCALL(link)
+ 332:	b8 13 00 00 00       	mov    $0x13,%eax
  337:	cd 40                	int    $0x40
  339:	c3                   	ret    
 
-0000033a <link>:
-SYSCALL(link)
- 33a:	b8 13 00 00 00       	mov    $0x13,%eax
+0000033a <mkdir>:
+SYSCALL(mkdir)
+ 33a:	b8 14 00 00 00       	mov    $0x14,%eax
  33f:	cd 40                	int    $0x40
  341:	c3                   	ret    
 
-00000342 <mkdir>:
-SYSCALL(mkdir)
- 342:	b8 14 00 00 00       	mov    $0x14,%eax
+00000342 <chdir>:
+SYSCALL(chdir)
+ 342:	b8 09 00 00 00       	mov    $0x9,%eax
  347:	cd 40                	int    $0x40
  349:	c3                   	ret    
 
-0000034a <chdir>:
-SYSCALL(chdir)
- 34a:	b8 09 00 00 00       	mov    $0x9,%eax
+0000034a <dup>:
+SYSCALL(dup)
+ 34a:	b8 0a 00 00 00       	mov    $0xa,%eax
  34f:	cd 40                	int    $0x40
  351:	c3                   	ret    
 
-00000352 <dup>:
-SYSCALL(dup)
- 352:	b8 0a 00 00 00       	mov    $0xa,%eax
+00000352 <getpid>:
+SYSCALL(getpid)
+ 352:	b8 0b 00 00 00       	mov    $0xb,%eax
  357:	cd 40                	int    $0x40
  359:	c3                   	ret    
 
-0000035a <getpid>:
-SYSCALL(getpid)
- 35a:	b8 0b 00 00 00       	mov    $0xb,%eax
+0000035a <sbrk>:
+SYSCALL(sbrk)
+ 35a:	b8 0c 00 00 00       	mov    $0xc,%eax
  35f:	cd 40                	int    $0x40
  361:	c3                   	ret    
 
-00000362 <sbrk>:
-SYSCALL(sbrk)
- 362:	b8 0c 00 00 00       	mov    $0xc,%eax
+00000362 <sleep>:
+SYSCALL(sleep)
+ 362:	b8 0d 00 00 00       	mov    $0xd,%eax
  367:	cd 40                	int    $0x40
  369:	c3                   	ret    
 
-0000036a <sleep>:
-SYSCALL(sleep)
- 36a:	b8 0d 00 00 00       	mov    $0xd,%eax
+0000036a <uptime>:
+SYSCALL(uptime)
+ 36a:	b8 0e 00 00 00       	mov    $0xe,%eax
  36f:	cd 40                	int    $0x40
  371:	c3                   	ret    
 
-00000372 <uptime>:
-SYSCALL(uptime)
- 372:	b8 0e 00 00 00       	mov    $0xe,%eax
+00000372 <getreadcount>:
+SYSCALL(getreadcount)
+ 372:	b8 16 00 00 00       	mov    $0x16,%eax
  377:	cd 40                	int    $0x40
  379:	c3                   	ret    
  37a:	66 90                	xchg   %ax,%ax
@@ -680,7 +680,7 @@ printint(int fd, int xx, int base, int sgn)
  3eb:	53                   	push   %ebx
  3ec:	57                   	push   %edi
  3ed:	88 45 d7             	mov    %al,-0x29(%ebp)
- 3f0:	e8 05 ff ff ff       	call   2fa <write>
+ 3f0:	e8 fd fe ff ff       	call   2f2 <write>
 
   while(--i >= 0)
  3f5:	83 c4 10             	add    $0x10,%esp
@@ -756,7 +756,7 @@ printf(int fd, const char *fmt, ...)
  45a:	6a 01                	push   $0x1
  45c:	50                   	push   %eax
  45d:	ff 75 08             	pushl  0x8(%ebp)
- 460:	e8 95 fe ff ff       	call   2fa <write>
+ 460:	e8 8d fe ff ff       	call   2f2 <write>
  465:	83 c4 10             	add    $0x10,%esp
  468:	83 c6 01             	add    $0x1,%esi
   for(i = 0; fmt[i]; i++){
@@ -811,7 +811,7 @@ printf(int fd, const char *fmt, ...)
  4bb:	6a 01                	push   $0x1
  4bd:	50                   	push   %eax
  4be:	ff 75 08             	pushl  0x8(%ebp)
- 4c1:	e8 34 fe ff ff       	call   2fa <write>
+ 4c1:	e8 2c fe ff ff       	call   2f2 <write>
  4c6:	83 c4 0c             	add    $0xc,%esp
  4c9:	8d 45 e6             	lea    -0x1a(%ebp),%eax
  4cc:	88 5d e6             	mov    %bl,-0x1a(%ebp)
@@ -827,7 +827,7 @@ printf(int fd, const char *fmt, ...)
       state = 0;
  4d8:	31 ff                	xor    %edi,%edi
   write(fd, &c, 1);
- 4da:	e8 1b fe ff ff       	call   2fa <write>
+ 4da:	e8 13 fe ff ff       	call   2f2 <write>
   for(i = 0; fmt[i]; i++){
  4df:	0f b6 5e ff          	movzbl -0x1(%esi),%ebx
   write(fd, &c, 1);
@@ -899,7 +899,7 @@ printf(int fd, const char *fmt, ...)
  571:	6a 01                	push   $0x1
  573:	57                   	push   %edi
  574:	53                   	push   %ebx
- 575:	e8 80 fd ff ff       	call   2fa <write>
+ 575:	e8 78 fd ff ff       	call   2f2 <write>
         while(*s != 0){
  57a:	0f b6 06             	movzbl (%esi),%eax
  57d:	83 c4 10             	add    $0x10,%esp
@@ -938,7 +938,7 @@ printf(int fd, const char *fmt, ...)
  5c0:	8d 45 e4             	lea    -0x1c(%ebp),%eax
  5c3:	50                   	push   %eax
  5c4:	ff 75 08             	pushl  0x8(%ebp)
- 5c7:	e8 2e fd ff ff       	call   2fa <write>
+ 5c7:	e8 26 fd ff ff       	call   2f2 <write>
         ap++;
  5cc:	89 7d d4             	mov    %edi,-0x2c(%ebp)
  5cf:	83 c4 10             	add    $0x10,%esp
@@ -1116,7 +1116,7 @@ malloc(uint nbytes)
   p = sbrk(nu * sizeof(Header));
  6db:	83 ec 0c             	sub    $0xc,%esp
  6de:	56                   	push   %esi
- 6df:	e8 7e fc ff ff       	call   362 <sbrk>
+ 6df:	e8 76 fc ff ff       	call   35a <sbrk>
   if(p == (char*)-1)
  6e4:	83 c4 10             	add    $0x10,%esp
  6e7:	83 f8 ff             	cmp    $0xffffffff,%eax

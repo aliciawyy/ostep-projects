@@ -2,3 +2,5 @@
 *~
 
 initial-xv6/src/_*
+
+*.sym
