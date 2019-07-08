@@ -1,20 +1,23 @@
 #include "stdio.h"
-#include "stdlib.h"
+#include "unistd.h"
+#include <sys/fcntl.h>
+
+#define N_BUF 1024
 
 int main(int argc, char* argv[]) {
-  int i;
+  int i, n;
+  char buf[N_BUF];
   for (i = 1; i < argc; ++i) {
-    FILE *fp = fopen(argv[i], "r");
-    if (fp == NULL) {
+    int fd = open(argv[i], O_RDONLY);
+    if (fd < 0) {
       printf("wcat: cannot open file\n");
-      exit(1);
+      return 1;
     }
-    char c = fgetc(fp);
-    while (c != EOF) {
-      printf("%c", c);
-      c = fgetc(fp);
-    }
-    fclose(fp);
+    do {
+      n = read(fd, buf, N_BUF);
+      write(STDOUT_FILENO, buf, n);
+    } while (n > 0);
+    close(fd);
   }
   return 0;
 }
