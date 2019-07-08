@@ -1,6 +1,5 @@
 #include "stdio.h"
-#include <sys/stat.h> 
-#include <fcntl.h>
+#include "stdlib.h"
 
 int main(int argc, char* argv[]) {
   int i;
@@ -8,7 +7,7 @@ int main(int argc, char* argv[]) {
     FILE *fp = fopen(argv[i], "r");
     if (fp == NULL) {
       printf("wcat: cannot open file\n");
-      return 1;
+      exit(1);
     }
     char c = fgetc(fp);
     while (c != EOF) {
