@@ -4,3 +4,6 @@
 initial-xv6/src/_*
 *.d
 *.sym
+*.asm
+*.img
+*.out
