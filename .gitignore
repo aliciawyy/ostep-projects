@@ -7,3 +7,4 @@ initial-xv6/src/_*
 *.asm
 *.img
 *.out
+initial-utilities/wcat/wcat
