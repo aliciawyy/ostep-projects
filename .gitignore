@@ -8,3 +8,5 @@ initial-xv6/src/_*
 *.img
 *.out
 initial-utilities/wcat/wcat
+
+initial-utilities/wzip/wzip
