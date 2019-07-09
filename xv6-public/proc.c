@@ -10,7 +10,7 @@
 struct {
   struct spinlock lock;
   struct proc proc[NPROC];
-} ptable;
+} ptable; /* process table */
 
 static struct proc *initproc;
 
@@ -73,6 +73,9 @@ myproc(void) {
 static struct proc*
 allocproc(void)
 {
+  /* alllocate a struc proc in the process table 
+   * and initialize parts of process's state
+   */
   struct proc *p;
   char *sp;
 
