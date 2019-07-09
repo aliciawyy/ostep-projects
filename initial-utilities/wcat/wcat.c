@@ -13,10 +13,9 @@ int main(int argc, char* argv[]) {
       printf("wcat: cannot open file\n");
       return 1;
     }
-    do {
-      n = read(fd, buf, N_BUF);
+    while ((n = read(fd, buf, N_BUF)) > 0) {
       write(STDOUT_FILENO, buf, n);
-    } while (n > 0);
+    }
     close(fd);
   }
   return 0;
