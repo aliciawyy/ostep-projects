@@ -2,6 +2,7 @@
 *~
 
 initial-xv6/src/_*
+initial-xv6/src/kernel
 *.d
 *.sym
 *.asm
@@ -11,3 +12,7 @@ initial-xv6/src/_*
 initial-utilities/wcat/wcat
 
 initial-utilities/wzip/wzip
+
+xv6-public/.idea/
+xv6-public/_*
+xv6-public/kernel
