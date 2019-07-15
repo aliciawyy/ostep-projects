@@ -1,7 +1,8 @@
-int acc = 0;
+long int acc = 0;
 
-int sum(int x, int y) {
-    int t = x + y;
+long int sum(int* x, int y) {
+    long int t = *x + y;
     acc += t;
+    *x = t;
     return t;
 }
